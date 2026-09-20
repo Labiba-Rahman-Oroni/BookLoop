@@ -35,3 +35,16 @@ CREATE TABLE books (
     is_available BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT NOW()
 );
+
+-- user_verifications টেবিল: ইউজারের আইডি ভেরিফিকেশনের তথ্য রাখে
+CREATE TABLE user_verifications (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    document_type VARCHAR(30) NOT NULL,
+    document_image VARCHAR(255) NOT NULL,
+    selfie_image VARCHAR(255) NOT NULL,
+    status VARCHAR(20) DEFAULT 'pending',
+    admin_note TEXT,
+    submitted_at TIMESTAMP DEFAULT NOW(),
+    reviewed_at TIMESTAMP
+);
