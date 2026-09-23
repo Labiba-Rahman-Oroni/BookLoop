@@ -1,0 +1,3 @@
+/Library/PostgreSQL/18/bin/psql -U hello -d bookloop -f database/schema.sql
+
+

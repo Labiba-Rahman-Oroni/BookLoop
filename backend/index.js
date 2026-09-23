@@ -9,15 +9,18 @@ require('dotenv').config();
 
 // db.js থেকে আমাদের ডাটাবেস সংযোগ (pool) আনছি
 const pool = require('./db');
+const authRoutes = require('./routes/authRoutes');
 
 // app হলো আমাদের সার্ভার
 const app = express();
+
 
 // cors ব্যবহার করার অনুমতি দিচ্ছি
 app.use(cors());
 
 // এটা সার্ভারকে JSON ডেটা বুঝতে সাহায্য করে
 app.use(express.json());
+app.use('/api/auth', authRoutes);
 
 // সার্ভার কোন পোর্টে (দরজা নম্বর) চলবে তা ঠিক করা হচ্ছে
 const PORT = process.env.PORT || 5000;
